@@ -5,6 +5,7 @@ import './style.css';
 function Counters() {
     
     const [counter, setCounter] = useState(0);
+    const [add, setAdd] = useState([]);
   
     function handleDecrement() {
       setCounter(counter - 1);
@@ -13,18 +14,26 @@ function Counters() {
     function handleIncrement() {
       setCounter(counter + 1);
     }
-  
+
+    function handleAdd() {
+      setAdd(add.concat(0))
+    }
+    
+    
+
     return (
       <div>
-        {[0, 0, 0].map((item) => (
-          <Counter 
+          <button onClick={handleAdd}>Add counter</button>
+          {add.map((item) => (
+            <Counter 
           counter={counter}
           increment={handleIncrement}
           decrement={handleDecrement}
-        />
-        ))} 
+            />
+          ))}
       </div>
     );
   }
+
   
   export default Counters;
