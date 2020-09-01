@@ -1,5 +1,5 @@
 import React from 'react';
-import Counters from './components/counters/index';
+import Counters from './components/counters';
 
 function App() {
     return (

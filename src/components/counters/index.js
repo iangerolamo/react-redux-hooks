@@ -1,39 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux'
 import Counter from '../counter/index';
 import './style.css';
 
-function Counters() {
-    
-    const [counter, setCounter] = useState(0);
-    const [add, setAdd] = useState([]);
+function Counters({ counters, increment, decrement, addCounter }) {
   
-    function handleDecrement() {
-      setCounter(counter - 1);
-    }
-  
-    function handleIncrement() {
-      setCounter(counter + 1);
-    }
-
-    function handleAdd() {
-      setAdd(add.concat(0))
-    }
-    
-    
-
     return (
       <div>
-          <button onClick={handleAdd}>Add counter</button>
-          {add.map((item) => (
-            <Counter 
-          counter={counter}
-          increment={handleIncrement}
-          decrement={handleDecrement}
-            />
+          <button onClick={addCounter}>Add counter</button>
+          {counters.map((counter, index) => (
+          <Counter {...{
+            key: index,
+            counter,
+            increment: increment(index),
+            decrement: decrement(index)
+          }} />
           ))}
       </div>
     );
   }
 
+  const mapStateToProps = (state) => ({
+    counters: state
+  })
   
-  export default Counters;
+  const mapDispatchToProps = (dispatch) => ({
+    addCounter: () => dispatch({ type: 'ADD_COUNTER' }),
+    increment: (index) => dispatch({ type: 'INCREMENT' }),
+    decrement: (index) => dispatch({ type: 'DECREMENT' })
+  })
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Counters)
