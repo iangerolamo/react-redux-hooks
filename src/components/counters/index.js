@@ -26,8 +26,8 @@ function Counters({ counters, increment, decrement, addCounter }) {
   
   const mapDispatchToProps = (dispatch) => ({
     addCounter: () => dispatch({ type: 'ADD_COUNTER' }),
-    increment: (index) => dispatch({ type: 'INCREMENT' }),
-    decrement: (index) => dispatch({ type: 'DECREMENT' })
+    increment: (index) => () => dispatch({ type: 'INCREMENT', index }),
+    decrement: (index) => () => dispatch({ type: 'DECREMENT', index })
   })
   
   export default connect(mapStateToProps, mapDispatchToProps)(Counters)
