@@ -2,6 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Counter from '../counter/index';
 import './style.css';
+import {
+  addCounter,
+  increment,
+  decrement
+} from '../../redux/action-creators';
+
+
+
 
 function Counters({ counters, increment, decrement, addCounter }) {
   
@@ -25,9 +33,9 @@ function Counters({ counters, increment, decrement, addCounter }) {
   })
   
   const mapDispatchToProps = (dispatch) => ({
-    addCounter: () => dispatch({ type: 'ADD_COUNTER' }),
-    increment: (index) => () => dispatch({ type: 'INCREMENT', index }),
-    decrement: (index) => () => dispatch({ type: 'DECREMENT', index })
+    addCounter: () => dispatch(addCounter()),
+    increment: (index) => () => dispatch(increment(index)),
+    decrement: (index) => () => dispatch(decrement(index))
   })
   
   export default connect(mapStateToProps, mapDispatchToProps)(Counters)
