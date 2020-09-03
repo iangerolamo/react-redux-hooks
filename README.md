@@ -1,1 +1,3 @@
-This is a project done in JavaScript using React and Redux ![react-logo](https://user-images.githubusercontent.com/67077374/92113714-1a5f9280-edc6-11ea-878f-92feaf94d0ed.png)
+This is a project done in JavaScript using React and Redux 
+
+![0_1p4U99DAhsOHqX-m](https://user-images.githubusercontent.com/67077374/92113906-690d2c80-edc6-11ea-8302-61b930084e51.jpg)
